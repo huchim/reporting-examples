@@ -1,0 +1,44 @@
+{
+    "$schema": "https://raw.githubusercontent.com/huchim/schemas/master/Reports/reports.schema.json",
+    "name": "Orders",
+    "label": "Lista de ordenes",
+    "icon": "list",
+    "description": "Reporte de ordenes",
+    "private": true,
+    "autorun": true,
+    "authors": [ "Carlos Jesús Huchim Ahumada <info@huchim.com>" ],
+    "homepage": "https://huchim.com",
+    "keywords": [ "orders" ],
+    "version": "1.0.0",
+    "excel.template": "template.xlsx",
+    "excel.throwerror": false,
+    "excel.headings.OrderDate": "Fecha",
+    "excel.headings.OrderNumber": "Número",
+    "excel.headings.CustomerId": "# Cliente",
+    "excel.headings.TotalAmount": "Total",
+    "html.template": "template.html",
+    "sql": [
+        {
+            "name": "data",
+            "script": "SELECT Id, OrderDate, OrderNumber, CustomerId, TotalAmount FROM [Order] WHERE 1=1 %FiltroCliente%",
+            "required": [ ],
+            "replaces": [
+                {
+                    "description": "Filtrar resultados por cliente",
+                    "token": "FiltroCliente",
+                    "when": [ "customerId" ],
+                    "script": "AND CustomerId = @customerId"
+                }
+            ]
+        }
+    ],
+    "args": [
+        {
+            "description": "Identificador de cliente",
+            "label": "Cliente",
+            "name": "customerId",
+            "type": "number",
+            "value": "0"
+        }
+    ]
+}

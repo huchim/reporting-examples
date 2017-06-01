@@ -1,0 +1,26 @@
+﻿<div class="page-header">
+    <h3>Ordenes</h3>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Número</th>
+            <th>Id Cliente</th>
+            <th>Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{Id}}</td>
+            <td>{{OrderDate}}</td>
+            <td>{{OrderNumber}}</td>
+            <td>{{CustomerId}}</td>
+            <td>{{TotalAmount}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
